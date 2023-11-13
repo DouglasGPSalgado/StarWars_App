@@ -1,7 +1,10 @@
 import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
+import LogoutButton from "../components/LogoutButton";
+import useAuthStore from "../contexts/authStore";
 
 const HomeScreen = () => {
+  const clearUser = useAuthStore((state) => state.clearUser);
   return (
     <View style={styles.container}>
       <Image
@@ -9,9 +12,10 @@ const HomeScreen = () => {
         style={styles.backgroundImage}
       />
       <View style={styles.content}>
+        <LogoutButton onPress={clearUser}/>
         <Text style={styles.title}>Bem-vindo ao Universo de Star Wars!</Text>
         <Text style={styles.description}>
-          Explore informações sobre planetas, espécies e veículoss
+          Explore informações sobre planetas, espécies e veículos.
         </Text>
       </View>
     </View>
